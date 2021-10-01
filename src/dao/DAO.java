@@ -36,10 +36,4 @@ public class DAO {
 		}
 		return list;
 	}
-	
-	public static void main(String[] args) {
-		DAO dao = new DAO();
-		List<Product> list = dao.getAllProduct();
-		System.out.println(list);
-	}
 }
