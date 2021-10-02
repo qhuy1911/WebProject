@@ -89,7 +89,8 @@
 							<div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
 								<div class="block-4 text-center border">
 									<figure class="block-4-image">
-										<a href="shop-single.html"><img src="${product.image}"
+										<a href="shop-single.html"
+										><img src="${product.image}"
 											alt="Image placeholder" class="img-fluid"></a>
 									</figure>
 									<div class="block-4-text p-4">
@@ -125,12 +126,10 @@
 						<div class="border p-4 rounded mb-4">
 							<h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
 							<ul class="list-unstyled mb-0">
-								<li class="mb-1"><a href="#" class="d-flex"><span>Men</span>
-										<span class="text-black ml-auto">(2,220)</span></a></li>
-								<li class="mb-1"><a href="#" class="d-flex"><span>Women</span>
-										<span class="text-black ml-auto">(2,550)</span></a></li>
-								<li class="mb-1"><a href="#" class="d-flex"><span>Children</span>
-										<span class="text-black ml-auto">(2,124)</span></a></li>
+								<c:forEach items="${listCategory}" var="category">
+									<li class="mb-1 active"><a href="CategoryServlet?cid=${category.id}" class="d-flex"><span>${category.name}</span>
+										<span class="text-black ml-auto">(10)</span></a></li>
+								</c:forEach>
 							</ul>
 						</div>
 

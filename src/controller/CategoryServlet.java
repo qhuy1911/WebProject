@@ -14,16 +14,16 @@ import model.Category;
 import model.Product;
 
 /**
- * Servlet implementation class HomeServlet
+ * Servlet implementation class CategoryServlet
  */
-@WebServlet("/HomeServlet")
-public class HomeServlet extends HttpServlet {
+@WebServlet("/CategoryServlet")
+public class CategoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HomeServlet() {
+    public CategoryServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,12 +32,13 @@ public class HomeServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// load data
+		response.setContentType("text/html;charset=UTF-8");
+		String cateID = request.getParameter("cid");
+		// get product by caegory
 		DAO dao = new DAO();
-		List<Product> list = dao.getAllProduct();
+		List<Product> list = dao.getProductByCategory(cateID);
 		List<Category> listC = dao.getAllCategory();
-
-		// set data into jsp
+		// load list into product.jsp
 		request.setAttribute("listProduct", list);
 		request.setAttribute("listCategory", listC);
 		request.getRequestDispatcher("/views/user/product.jsp").forward(request, response);
@@ -50,5 +51,5 @@ public class HomeServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-	
+
 }
