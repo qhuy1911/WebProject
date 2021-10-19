@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* common */
+
+.clear {
+    clear: both;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.content {
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;   
+}
+
+.content .heading h1 {
+    background-color: #57b846;
+    color: #fff;
+    width: 500px;
+    padding: 50px 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.content .message {
+	margin-top: 16px; 
+	margin-bottom: 0px; 
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.content form {
+    margin: 0 auto;
+    padding: 20px 50px;
+}
+
+.content form input[type="text"],
+.content form input[type="password"],
+.content form input[type="email"]{
+    height: 50px;
+    width: 100%;
+    font-size: 18px;
+    border: 1px solid #aaa;
+    border-radius: 25px;
+    padding: 0 24px;
+    margin-bottom: 24px;
+    outline: none;
+}
+
+.content form input[type="submit"] {
+    background-color: #57b846;
+    color: #fff;
+    height: 50px;
+    width: 100%;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 700;
+    border: none;
+    border-radius: 25px;
+    padding: 0 24px;
+    margin: 24px 0;
+    outline: none;
+    cursor: pointer;
+}
+
+.content form #forgot-password {
+    text-decoration: none;
+    font-size: 16px;
+    color: #57b846;
+    font-weight: bold;
+    float: right;
+}
+
+.footer {
+    margin-top: 50px;
+    text-align: center;
+    line-height: 24px;
+    margin-bottom: 16px;
+}
+
+.footer p {
+    color: #555;
+}
+
+.footer a {
+    color: #57b846;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+}

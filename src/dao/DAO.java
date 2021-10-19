@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import context.DBContext;
+import model.Account;
 import model.Category;
 import model.Product;
 
@@ -94,6 +95,61 @@ public class DAO {
 			// TODO: handle exception
 		}
 		return null;
+	}
+	
+	public Account login(String username, String password) {
+		String query = "select * from Account where username = ? and password = ?";
+		try {
+			conn = new DBContext().connect();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, username);
+			ps.setString(2, password);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				return new Account(rs.getInt(1), 
+						rs.getString(2), 
+						rs.getString(3), 
+						rs.getString(4), 
+						rs.getInt(5));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return null;
+	}
+	
+	public Account checkUsername(String username) {
+		String query = "select * from Account where username = ?";
+		try {
+			conn = new DBContext().connect();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, username);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				return new Account(rs.getInt(1), 
+						rs.getString(2), 
+						rs.getString(3), 
+						rs.getString(4), 
+						rs.getInt(5));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return null;
+	}
+	
+	public void signup(String username, String password, String email) {
+		String query = "insert into Account values (?, ?, ?, 0)";
+		try {
+			conn = new DBContext().connect();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, username);
+			ps.setString(2, password);
+			ps.setString(3, email);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 	
 	public static void main(String[] args) {
