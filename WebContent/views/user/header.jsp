@@ -1,3 +1,4 @@
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <header class="site-navbar" role="banner">
@@ -23,7 +24,12 @@
 				<div class="col-6 col-md-4 order-3 order-md-3 text-right">
 					<div class="site-top-icons">
 						<ul>
-							<li><a href="LoginServlet"><span class="icon icon-person"></span></a></li>
+							<c:if test="${sessionScope.account == null }">
+								<li><a href="LoginServlet"><span class="icon icon-person"></span></a></li>
+							</c:if>
+							<c:if test="${sessionScope.account != null }">
+								<li>Hello ${sessionScope.account.username }, <a href="LogoutServlet"><span class="icon icon-exit_to_app"></span></a></li>
+							</c:if>
 							<li><a href="#"><span class="icon icon-heart-o"></span></a></li>
 							<li><a href="cart.html" class="site-cart"> <span
 									class="icon icon-shopping_cart"></span> <span class="count">2</span>

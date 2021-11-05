@@ -8,20 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.DAO;
-import model.Account;
-
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class LogoutServlet
  */
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/LogoutServlet")
+public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public LogoutServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,27 +27,18 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/views/user/login.jsp").forward(request, response);
+		response.setContentType("text/html");
+		HttpSession session = request.getSession();
+		session.removeAttribute("account");
+		response.sendRedirect("HomeServlet");
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html");
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		DAO dao = new DAO();
-		Account account = dao.login(username, password);
-		if (account == null) {
-			request.setAttribute("message", "Invalid username or password!!!");
-			doGet(request, response);
-		} else {
-//			request.getRequestDispatcher("HomeServlet").forward(request, response);
-			HttpSession session = request.getSession();
-			session.setAttribute("account", account);
-			response.sendRedirect("HomeServlet");
-		}
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
