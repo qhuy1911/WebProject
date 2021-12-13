@@ -49,7 +49,11 @@ public class LoginServlet extends HttpServlet {
 //			request.getRequestDispatcher("HomeServlet").forward(request, response);
 			HttpSession session = request.getSession();
 			session.setAttribute("account", account);
-			response.sendRedirect("HomeServlet");
+			if (account.getIsAdmin() == 1) {
+				response.sendRedirect("views/admin/product.jsp");
+			} else {
+				response.sendRedirect("HomeServlet");				
+			}
 		}
 	}
 
