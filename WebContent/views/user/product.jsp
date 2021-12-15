@@ -90,7 +90,7 @@
 								<div class="block-4 text-center border">
 									<figure class="block-4-image">
 										<a href="DetailServlet?id=${product.id}"
-										><img src="${product.image}"
+										><img src="${pageContext.request.contextPath}/views/user/images/${product.image}"
 											alt="Image placeholder" class="img-fluid"></a>
 									</figure>
 									<div class="block-4-text p-4">

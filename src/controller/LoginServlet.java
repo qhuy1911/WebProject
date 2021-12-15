@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("account", account);
 			if (account.getIsAdmin() == 1) {
-				response.sendRedirect("views/admin/product.jsp");
+				response.sendRedirect("HomeAdmin");
 			} else {
 				response.sendRedirect("HomeServlet");				
 			}

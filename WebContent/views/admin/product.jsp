@@ -1,3 +1,4 @@
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -8,17 +9,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Purple Admin</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="./assets/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="./assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/admin/assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/admin/assets/vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/admin/assets/css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="./assets/images/favicon.ico" />
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/views/admin/assets/images/favicon.ico" />
   </head>
   <body>
     <div class="container-scroller">
@@ -27,36 +28,7 @@
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:../../partials/_sidebar.html -->
-        <nav class="sidebar sidebar-offcanvas" id="sidebar">
-          <ul class="nav">
-            <li class="nav-item nav-profile">
-              <a href="#" class="nav-link">
-                <div class="nav-profile-image">
-                  <img src="./assets/images/faces-clipart/pic-1.png" alt="profile">
-                  <span class="login-status online"></span>
-                  <!--change to offline or busy as needed-->
-                </div>
-                <div class="nav-profile-text d-flex flex-column">
-                  <span class="font-weight-bold mb-2">Huy Nguyen</span>
-                  <span class="text-secondary text-small">Shop Manager</span>
-                </div>
-                <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/index.html">
-                <span class="menu-title">Home</span>
-                <i class="mdi mdi-home menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/pages/tables/product.html">
-                <span class="menu-title">Product</span>
-                <i class="mdi mdi-tshirt-v menu-icon"></i>
-              </a>
-            </li>
-          </ul>
-        </nav>
+        <jsp:include page="sidebar.jsp"></jsp:include>
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
@@ -78,41 +50,32 @@
                     <table class="table table-bordered">
                       <thead>
                         <tr>
-                          <th> # </th>
+                          <th> ID </th>
                           <th> Name </th>
-                          <th> Amount </th>
+                          <th> Title </th>
                           <th> Price </th>
                           <th>  </th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr >
-                          <td> 1 </td>
-                          <td> Herman Beck </td>
-                          <td> 2 </td>
-                          <td> $ 77.99 </td>
-                          <td>  
-                            <a href="editProduct.jsp" > <i class="icon-table icon-edit mdi mdi-grease-pencil "></i></a></i> 
-                            <a href="#"><i class="icon-table icon-delete mdi mdi-delete "  style="color: crimson;"></i></a>
-                          </td>
-                        </tr>
-                        <tr class="table-warning">
-                          <tr>
-                            <td> 1 </td>
-                            <td> Herman Beck </td>
-                            <td> 2 </td>
-                            <td> $ 77.99 </td>
-                            <td>  
-                              <a href="editProduct.jsp" > <i class="icon-table icon-edit mdi mdi-grease-pencil "></i></a></i> 
-                              <a href="#"><i class="icon-table icon-delete mdi mdi-delete " style="color: crimson;"></i></a>
-                            </td>
-                          </tr>
-                        </tr>
+                      	<c:forEach var="item" items="${listP}">
+                        	<tr >
+                          		<td> ${item.id } </td>
+                         		<td> ${item.name } </td>
+                          		<td> ${item.title } </td>
+                        		<td> $ ${item.price } </td>
+                          		<td>  
+                            		<a href="EditProduct?pid=${item.id }" > <i class="icon-table icon-edit mdi mdi-grease-pencil "></i></a> 
+                            		<a href="DeleteProduct?pid=${item.id }"><i class="icon-table icon-delete mdi mdi-delete "  style="color: crimson;"></i></a>
+                          		</td>
+                        	</tr>
+                      	
+                      	</c:forEach>
                         
                       </tbody>
                     </table>  
                       <div style="margin-top: 20px;"><button type="button" class="btn btn-gradient-success btn-fw">
-                        <a href="addNewProduct.jsp" style="color: white; text-decoration: none">Add new</a>
+                        <a href="AddProduct" style="color: white; text-decoration: none">Add new</a>
                       </button>
                     </div>
                   </div> 
@@ -122,11 +85,7 @@
           </div>
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
-          <footer class="footer">
-            <div class="container-fluid clearfix">
-              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © shopbanquanao.com 2021</span>
-            </div>
-          </footer>
+          <jsp:include page="footer.jsp"></jsp:include>
           <!-- partial -->
         </div>
         <!-- main-panel ends -->
@@ -135,14 +94,14 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="${pageContext.request.contextPath}/views/admin/assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <!-- End plugin js for this page -->
     <!-- inject:js -->
-    <script src="../../assets/js/off-canvas.js"></script>
-    <script src="../../assets/js/hoverable-collapse.js"></script>
-    <script src="../../assets/js/misc.js"></script>
+    <script src="${pageContext.request.contextPath}/views/admin/assets/js/off-canvas.js"></script>
+    <script src="${pageContext.request.contextPath}/views/admin/assets/js/hoverable-collapse.js"></script>
+    <script src="${pageContext.request.contextPath}/views/admin/assets/js/misc.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
     <!-- End custom js for this page -->

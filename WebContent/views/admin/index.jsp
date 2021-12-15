@@ -8,17 +8,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Purple Admin</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="./assets/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="./assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/admin/assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/admin/assets/vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/views/admin/assets/css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="./assets/images/favicon.ico" />
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/views/admin/assets/images/favicon.ico" />
   </head>
   <body>
     <div class="container-scroller">
@@ -50,7 +50,7 @@
               <div class="col-md-4 stretch-card grid-margin">
                 <div class="card bg-gradient-danger card-img-holder text-white">
                   <div class="card-body">
-                    <img src="./assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+                    <img src="${pageContext.request.contextPath}/views/admin/assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
                     <h4 class="font-weight-normal mb-3">Weekly Sales <i class="mdi mdi-chart-line mdi-24px float-right"></i>
                     </h4>
                     <h2 class="mb-5">$ 15,0000</h2>
@@ -61,7 +61,7 @@
               <div class="col-md-4 stretch-card grid-margin">
                 <div class="card bg-gradient-info card-img-holder text-white">
                   <div class="card-body">
-                    <img src="./assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+                    <img src="${pageContext.request.contextPath}/views/admin/assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
                     <h4 class="font-weight-normal mb-3">Weekly Orders <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
                     </h4>
                     <h2 class="mb-5">45,6334</h2>
@@ -72,7 +72,7 @@
               <div class="col-md-4 stretch-card grid-margin">
                 <div class="card bg-gradient-success card-img-holder text-white">
                   <div class="card-body">
-                    <img src="./assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+                    <img src="${pageContext.request.contextPath}/views/admin/assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
                     <h4 class="font-weight-normal mb-3">Visitors Online <i class="mdi mdi-diamond mdi-24px float-right"></i>
                     </h4>
                     <h2 class="mb-5">95,5741</h2>
@@ -115,19 +115,19 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="./assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="${pageContext.request.contextPath}/views/admin/assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
-    <script src="./assets/vendors/chart.js/Chart.min.js"></script>
+    <script src="${pageContext.request.contextPath}/views/admin/assets/vendors/chart.js/Chart.min.js"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
-    <script src="./assets/js/off-canvas.js"></script>
-    <script src="./assets/js/hoverable-collapse.js"></script>
-    <script src="./assets/js/misc.js"></script>
+    <script src="${pageContext.request.contextPath}/views/admin/assets/js/off-canvas.js"></script>
+    <script src="${pageContext.request.contextPath}/views/admin/assets/js/hoverable-collapse.js"></script>
+    <script src="${pageContext.request.contextPath}/views/admin/assets/js/misc.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
-    <script src="./assets/js/dashboard.js"></script>
-    <script src="./assets/js/todolist.js"></script>
+    <script src="${pageContext.request.contextPath}/views/admin/assets/js/dashboard.js"></script>
+    <script src="${pageContext.request.contextPath}/views/admin/assets/js/todolist.js"></script>
     <!-- End custom js for this page -->
   </body>
 </html>

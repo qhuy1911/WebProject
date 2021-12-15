@@ -35,6 +35,12 @@ public class DAO {
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
+		} finally {
+			try {
+				conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
 		}
 		return list;
 	}
@@ -50,6 +56,12 @@ public class DAO {
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
+		} finally {
+			try {
+				conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
 		}
 		return list;
 	}
@@ -72,6 +84,12 @@ public class DAO {
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
+		} finally {
+			try {
+				conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
 		}
 		return list;
 	}
@@ -93,6 +111,34 @@ public class DAO {
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
+		} finally {
+			try {
+				conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+		return null;
+	}
+	
+	public Category getCategoryById(String id) {
+		String query = "select * from category where id = ?";
+		try {
+			conn = new DBContext().connect();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				return new Category(rs.getInt(1), rs.getString(2));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			try {
+				conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
 		}
 		return null;
 	}
@@ -114,6 +160,12 @@ public class DAO {
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
+		} finally {
+			try {
+				conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
 		}
 		return null;
 	}
@@ -134,6 +186,12 @@ public class DAO {
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
+		} finally {
+			try {
+				conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
 		}
 		return null;
 	}
@@ -149,6 +207,12 @@ public class DAO {
 			ps.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
+		} finally {
+			try {
+				conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
 		}
 	}
 	
