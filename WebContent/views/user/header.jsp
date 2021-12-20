@@ -30,9 +30,15 @@
 							<c:if test="${sessionScope.account != null }">
 								<li>Hello ${sessionScope.account.username }, <a href="LogoutServlet"><span class="icon icon-exit_to_app"></span></a></li>
 							</c:if>
-							<li><a href="#"><span class="icon icon-heart-o"></span></a></li>
-							<li><a href="cart.html" class="site-cart"> <span
-									class="icon icon-shopping_cart"></span> <span class="count">2</span>
+							<li><a href="CartServlet" class="site-cart"> <span
+									class="icon icon-shopping_cart"></span> <span class="count">
+										<c:if test="${cart != null }">
+											${cart.count }
+										</c:if>
+										<c:if test="${cart == null }">
+											0
+										</c:if>
+									</span>
 							</a></li>
 							<li class="d-inline-block d-md-none ml-md-0"><a href="#"
 								class="site-menu-toggle js-menu-toggle"><span

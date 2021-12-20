@@ -39,7 +39,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-            <img src="${product.image}" alt="Image" class="img-fluid">
+            <img src="${pageContext.request.contextPath}/views/user/images/${product.image}" alt="Image" class="img-fluid">
           </div>
           <div class="col-md-6">
             <h2 class="text-black">${product.name}</h2>
@@ -59,20 +59,22 @@
                 <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-xl" name="shop-sizes"></span> <span class="d-inline-block text-black"> Extra Large</span>
               </label>
             </div>
+            <form action="AddToCart" method="get">
+            <input type="hidden" name="pid" value="${product.id }">
             <div class="mb-5">
               <div class="input-group mb-3" style="max-width: 120px;">
               <div class="input-group-prepend">
                 <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
               </div>
-              <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+              <input type="text" class="form-control text-center" name="qty" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
               <div class="input-group-append">
                 <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
               </div>
             </div>
 
             </div>
-            <p><a href="cart.html" class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>
-
+            <input type="submit" class="buy-now btn btn-sm btn-primary" value="Add To Cart">
+			</form>
           </div>
         </div>
       </div>
@@ -91,7 +93,7 @@
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="images/cloth_1.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="${pageContext.request.contextPath}/views/user/images/cloth_1.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#">Tank Top</a></h3>
@@ -103,7 +105,7 @@
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="images/shoe_1.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="${pageContext.request.contextPath}/views/user/images/shoe_1.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#">Corater</a></h3>
@@ -115,7 +117,7 @@
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="images/cloth_2.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="${pageContext.request.contextPath}/views/user/images/cloth_2.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#">Polo Shirt</a></h3>
@@ -127,7 +129,7 @@
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="images/cloth_3.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="${pageContext.request.contextPath}/views/user/images/cloth_3.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#">T-Shirt Mockup</a></h3>
@@ -139,7 +141,7 @@
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="images/shoe_1.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="${pageContext.request.contextPath}/views/user/images/shoe_1.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#">Corater</a></h3>
