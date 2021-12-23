@@ -39,12 +39,13 @@
 	
     <div class="site-section">
       <div class="container">
+      	<form action="UpdateCart" method="post">
         <div class="row mb-5">
       	<c:if test="${cart.count == 0 }">
       		<h2 class="text-black" style="text-align: center;">Empty Cart</h2>
       	</c:if>
       	<c:if test="${cart.count != 0 }">
-          <form class="col-md-12" method="post">
+          <div class="col-md-12">
             <div class="site-blocks-table">
               <table class="table table-bordered">
                 <thead>
@@ -72,7 +73,7 @@
                         <div class="input-group-prepend">
                           <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
                         </div>
-                        <input type="text" class="form-control text-center" value="${cartItem.quantity }" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                        <input type="text" class="form-control text-center" name="${cartItem.product.id }" value="${cartItem.quantity }" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
                         <div class="input-group-append">
                           <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
                         </div>
@@ -80,13 +81,13 @@
 
                     </td>
                     <td>${cartItem.price }</td>
-                    <td><a href="#" class="btn btn-primary btn-sm">X</a></td>
+                    <td><a href="DeleteCartItem?pid=${cartItem.product.id }" class="btn btn-primary btn-sm">X</a></td>
                   </tr>
                   </c:forEach>
                 </tbody>
               </table>
             </div>
-          </form>
+          </div>
       	</c:if>
         </div>
 
@@ -94,7 +95,7 @@
           <div class="col-md-6">
             <div class="row mb-5">
               <div class="col-md-6 mb-3 mb-md-0">
-                <button class="btn btn-primary btn-sm btn-block">Update Cart</button>
+                <input type="submit" class="btn btn-primary btn-sm btn-block" value="Update Cart">
               </div>
               <div class="col-md-6">
                 <a href="HomeServlet" class="btn btn-outline-primary btn-sm btn-block">Continue Shopping</a>
@@ -129,6 +130,7 @@
             </div>
           </div>
         </div>
+        </form>
       </div>
     </div>
 
