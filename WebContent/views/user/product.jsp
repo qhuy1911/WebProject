@@ -11,18 +11,26 @@
 
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/views/user/fonts/icomoon/style.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/views/user/fonts/icomoon/style.css">
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/views/user/css/bootstrap.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/views/user/css/magnific-popup.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/views/user/css/jquery-ui.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/views/user/css/owl.carousel.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/views/user/css/owl.theme.default.min.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/views/user/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/views/user/css/magnific-popup.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/views/user/css/jquery-ui.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/views/user/css/owl.carousel.min.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/views/user/css/owl.theme.default.min.css">
 
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/views/user/css/aos.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/views/user/css/aos.css">
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/views/user/css/style.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/views/user/css/style.css">
 
 </head>
 <body>
@@ -82,29 +90,30 @@
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="row mb-5">
-						
+
 							<c:forEach items="${listProduct}" var="product">
-							<div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-								<div class="block-4 text-center border">
-									<figure class="block-4-image">
-										<a href="DetailServlet?id=${product.id}"
-										><img src="${pageContext.request.contextPath}/views/user/images/${product.image}"
-											alt="Image placeholder" class="img-fluid"></a>
-									</figure>
-									<div class="block-4-text p-4">
-										<h3>
-											<a href="DetailServlet?id=${product.id}">${product.name}</a>
-										</h3>
-										<p class="mb-0">${product.title}</p>
-										<p class="text-primary font-weight-bold">$${product.price}</p>
-										<a href="AddToCart?pid=${product.id}" class="btn btn-primary">Add to cart</a>
+								<div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
+									<div class="block-4 text-center border">
+										<figure class="block-4-image">
+											<a href="DetailServlet?id=${product.id}"><img
+												src="${pageContext.request.contextPath}/views/user/images/${product.image}"
+												alt="Image placeholder" class="img-fluid"></a>
+										</figure>
+										<div class="block-4-text p-4">
+											<h3>
+												<a href="DetailServlet?id=${product.id}">${product.name}</a>
+											</h3>
+											<p class="mb-0">${product.title}</p>
+											<p class="text-primary font-weight-bold">$${product.price}</p>
+											<a href="AddToCart?pid=${product.id}" class="btn btn-primary">Add
+												to cart</a>
+										</div>
 									</div>
 								</div>
-							</div>
 							</c:forEach>
-							
+
 						</div>
 						<div class="row" data-aos="fade-up">
 							<div class="col-md-12 text-center">
@@ -128,8 +137,8 @@
 							<h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
 							<ul class="list-unstyled mb-0">
 								<c:forEach items="${listCategory}" var="category">
-									<li class="mb-1 active"><a href="CategoryServlet?cid=${category.id}" class="d-flex"><span>${category.name}</span>
-										<span class="text-black ml-auto">(10)</span></a></li>
+									<li class="mb-1 active"><a
+										href="CategoryServlet?cid=${category.id}" class="d-flex"><span>${category.name}</span></a></li>
 								</c:forEach>
 							</ul>
 						</div>
@@ -140,7 +149,7 @@
 									by Price</h3>
 								<div id="slider-range" class="border-primary"></div>
 								<input type="text" name="text" id="amount"
-									class="form-control border-0 pl-0 bg-white" disabled="" />
+									class="form-control border-0 pl-0 bg-white" disabled />
 							</div>
 
 							<div class="mb-4">
@@ -162,15 +171,13 @@
 								<a href="#" class="d-flex color-item align-items-center"> <span
 									class="bg-danger color d-inline-block rounded-circle mr-2"></span>
 									<span class="text-black">Red (2,429)</span>
-								</a> <a href="#" class="d-flex color-item align-items-center">
-									<span
+								</a> <a href="#" class="d-flex color-item align-items-center"> <span
 									class="bg-success color d-inline-block rounded-circle mr-2"></span>
 									<span class="text-black">Green (2,298)</span>
-								</a> <a href="#" class="d-flex color-item align-items-center">
-									<span class="bg-info color d-inline-block rounded-circle mr-2"></span>
+								</a> <a href="#" class="d-flex color-item align-items-center"> <span
+									class="bg-info color d-inline-block rounded-circle mr-2"></span>
 									<span class="text-black">Blue (1,075)</span>
-								</a> <a href="#" class="d-flex color-item align-items-center">
-									<span
+								</a> <a href="#" class="d-flex color-item align-items-center"> <span
 									class="bg-primary color d-inline-block rounded-circle mr-2"></span>
 									<span class="text-black">Purple (1,075)</span>
 								</a>
@@ -193,7 +200,9 @@
 									data-aos="fade" data-aos-delay="">
 									<a class="block-2-item" href="#">
 										<figure class="image">
-											<img src="${pageContext.request.contextPath}/views/user/images/women.jpg" alt="" class="img-fluid">
+											<img
+												src="${pageContext.request.contextPath}/views/user/images/women.jpg"
+												alt="" class="img-fluid">
 										</figure>
 										<div class="text">
 											<span class="text-uppercase">Collections</span>
@@ -205,7 +214,9 @@
 									data-aos="fade" data-aos-delay="100">
 									<a class="block-2-item" href="#">
 										<figure class="image">
-											<img src="${pageContext.request.contextPath}/views/user/images/children.jpg" alt="" class="img-fluid">
+											<img
+												src="${pageContext.request.contextPath}/views/user/images/children.jpg"
+												alt="" class="img-fluid">
 										</figure>
 										<div class="text">
 											<span class="text-uppercase">Collections</span>
@@ -217,7 +228,9 @@
 									data-aos="fade" data-aos-delay="200">
 									<a class="block-2-item" href="#">
 										<figure class="image">
-											<img src="${pageContext.request.contextPath}/views/user/images/men.jpg" alt="" class="img-fluid">
+											<img
+												src="${pageContext.request.contextPath}/views/user/images/men.jpg"
+												alt="" class="img-fluid">
 										</figure>
 										<div class="text">
 											<span class="text-uppercase">Collections</span>
@@ -235,12 +248,18 @@
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
 
-	<script src="${pageContext.request.contextPath}/views/user/js/jquery-3.3.1.min.js"></script>
-	<script src="${pageContext.request.contextPath}/views/user/js/jquery-ui.js"></script>
-	<script src="${pageContext.request.contextPath}/views/user/js/popper.min.js"></script>
-	<script src="${pageContext.request.contextPath}/views/user/js/bootstrap.min.js"></script>
-	<script src="${pageContext.request.contextPath}/views/user/js/owl.carousel.min.js"></script>
-	<script src="${pageContext.request.contextPath}/views/user/js/jquery.magnific-popup.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/views/user/js/jquery-3.3.1.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/views/user/js/jquery-ui.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/views/user/js/popper.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/views/user/js/bootstrap.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/views/user/js/owl.carousel.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/views/user/js/jquery.magnific-popup.min.js"></script>
 	<script src="${pageContext.request.contextPath}/views/user/js/aos.js"></script>
 
 	<script src="${pageContext.request.contextPath}/views/user/js/main.js"></script>

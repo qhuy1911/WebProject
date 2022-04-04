@@ -1,13 +1,16 @@
 package adminController;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import dao.AdminDAO;
 import dao.DAO;
@@ -17,8 +20,14 @@ import model.Product;
  * Servlet implementation class EditProductServlet
  */
 @WebServlet("/EditProduct")
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2,
+maxFileSize = 1024 * 1024 * 10,
+maxRequestSize = 1024 * 1024 * 50
+)
 public class EditProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private static final String SAVE_DIR = "images";
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -52,9 +61,22 @@ public class EditProductServlet extends HttpServlet {
 			String title = request.getParameter("title");
 			String description = request.getParameter("description");
 			double price = Double.parseDouble(request.getParameter("price"));
-			String image = request.getParameter("img[]");
-			Product product = new Product(id, name, image, price, title, description);
+			Part filePart = request.getPart("imageFile");
+			String fileName = getFileName(filePart);
 			
+			// Upload file
+			String appPath = "E:\\HK1_2021-2022\\LapTrinhWeb\\Project\\ShopOnline\\WebContent\\views\\user";
+			
+			String savePath = appPath + File.separator + SAVE_DIR;
+			
+			File fileSaveDir = new File(savePath);
+			if (!fileSaveDir.exists()) {
+				fileSaveDir.mkdir();
+			}
+			
+			filePart.write(savePath + File.separator + fileName);
+			
+			Product product = new Product(id, name, fileName, price, title, description);
 			AdminDAO dao = new AdminDAO();
 			boolean success = dao.editProduct(product);
 			if (success) {
@@ -66,6 +88,17 @@ public class EditProductServlet extends HttpServlet {
 		} else {
 			response.sendRedirect("ProductAdmin");
 		}
+	}
+	
+	private String getFileName(Part part) {
+	    final String partHeader = part.getHeader("content-disposition");
+	    for (String content : part.getHeader("content-disposition").split(";")) {
+	        if (content.trim().startsWith("filename")) {
+	            return content.substring(
+	                    content.indexOf('=') + 1).trim().replace("\"", "");
+	        }
+	    }
+	    return null;
 	}
 
 }
