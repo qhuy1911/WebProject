@@ -44,7 +44,7 @@
               <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <form class="forms-sample" action="EditProduct" method="post">
+                    <form class="forms-sample" action="EditProduct" method="post" enctype="multipart/form-data">
                     	<div class="form-group">
                         <input type="hidden" name="id" class="form-control" value="${product.id }">
                       </div>
