@@ -2,6 +2,7 @@ package adminController;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import dao.AdminDAO;
+import dao.DAO;
+import model.Category;
 import model.Product;
 
 /**
@@ -40,6 +43,10 @@ public class AddProductServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		DAO dao = new DAO();
+		List<Category> listC = dao.getAllCategory();
+		request.setAttribute("listC", listC);
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/admin/addNewProduct.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -57,8 +64,9 @@ public class AddProductServlet extends HttpServlet {
 			String title = request.getParameter("title");
 			String description = request.getParameter("description");
 			double price = Double.parseDouble(request.getParameter("price"));
+			int category = Integer.parseInt(request.getParameter("category"));
 			
-			String appPath = "E:\\HK1_2021-2022\\LapTrinhWeb\\Project\\ShopOnline\\WebContent\\views\\user";
+			String appPath = "E:\\Nam 4\\HK1\\LTW-PROJECT\\WebProject\\WebContent\\views\\user";
 			
 			String savePath = appPath + File.separator + SAVE_DIR;
 			
@@ -69,7 +77,7 @@ public class AddProductServlet extends HttpServlet {
 			
 			filePart.write(savePath + File.separator + fileName);
 			
-			Product product = new Product(0, name, fileName, price, title, description);
+			Product product = new Product(0, name, fileName, price, title, description, category);
 			AdminDAO dao = new AdminDAO();
 			boolean  success = dao.addProduct(product);
 			if (success) {
@@ -78,7 +86,7 @@ public class AddProductServlet extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/AddProduct");
 				dispatcher.forward(request, response);
 			}
-		} else {
+		} else if (action.equals("Cancel")) {
 			response.sendRedirect("ProductAdmin");
 		}	
 	}

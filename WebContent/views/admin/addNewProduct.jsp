@@ -1,3 +1,4 @@
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -44,40 +45,66 @@
               <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <form class="forms-sample" action="AddProduct" method="post" enctype="multipart/form-data">
+                    <form  name="formAddProduct" class="forms-sample" action="AddProduct" method="post" enctype="multipart/form-data">
                       <div class="form-group">
                         <label>Name</label>
-                        <input type="text" name="name" class="form-control"  placeholder="Name">
+                        <input type="text" name="name" class="form-control"  placeholder="Name" required="required">
                       </div>
                       <div class="form-group">
                         <label >Title</label>
-                        <input type="text" name="title" class="form-control"  placeholder="Title">
+                        <input type="text" name="title" class="form-control"  placeholder="Title" required="required">
                       </div>
                       <div class="form-group">
                         <label >Description</label>
-                        <input type="text" name="description" class="form-control"  placeholder="Description">
+                        <input type="text" name="description" class="form-control"  placeholder="Description" required="required">
                       </div>
                       <div class="form-group">
                         <label >Price</label>
-                        <input type="text" name="price" class="form-control" placeholder="Price">
+                        <input type="text" name="price" class="form-control" placeholder="Price" required="required">
+                      </div>
+                     <div class="form-group">
+                        <label >Category</label>	
+                        <select name="category" class="form-control">
+                        	<c:forEach var="item" items="${listC}">
+                        		<option value="${item.id}">${item.name}</option>
+                        	</c:forEach>
+                        </select>
                       </div>
                       <div class="form-group">
-                        <label>Image upload</label>
+                        <label>Image upload <span id="imageFileError"></span></label>
                         <input type="file" name="imageFile" class="file-upload-default">
                         <div class="input-group col-xs-12">
-                          <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                          <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image" required="required">
                           <span class="input-group-append">
                             <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
                           </span>
                         </div>
                       </div>  
                       <button type="submit" class="btn btn-gradient-primary mr-2" name="action" value="Submit">Submit</button>
-                      <button class="btn btn-light" name="action" value="Cancel">Cancel</button>
+                      <button class="btn btn-light" name="action" onclick="location.href='ProductAdmin'">Cancel</button>
                     </form>
                   </div>
                 </div>
               </div>  
           </div>
+          <script type="text/javascript">
+          function validate() {
+              var name = document.formAddProduct.imageFile.value;
+              var status = false;
+       
+              if (name.length < 1) {
+                  document.getElementById("imageFileError").innerHTML = 
+       				"Please upload image";
+                  document.getElementById("imageFileError").style.color = "red";
+                  status = false;
+              } else {
+                  document.getElementById("imageFileError").innerHTML = 
+                      "Image Valid";
+                  status = true;
+              }
+              return status;
+          }
+          </script>
           <!-- content-wrapper ends -->
           <!-- partial:./partials/_footer.html -->
           <footer class="footer">

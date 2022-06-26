@@ -42,7 +42,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 mb-0">
-						<a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong
+						<a href="HomeServlet">Home</a> <span class="mx-2 mb-0">/</span> <strong
 							class="text-black">Shop</strong>
 					</div>
 				</div>
@@ -66,12 +66,13 @@
 											class="btn btn-secondary btn-sm dropdown-toggle"
 											id="dropdownMenuOffset" data-toggle="dropdown"
 											aria-haspopup="true" aria-expanded="false">Latest</button>
-										<div class="dropdown-menu"
+										<ul class="dropdown-menu"
 											aria-labelledby="dropdownMenuOffset">
-											<a class="dropdown-item" href="#">Men</a> <a
-												class="dropdown-item" href="#">Women</a> <a
-												class="dropdown-item" href="#">Children</a>
-										</div>
+											<c:forEach items="${listCategory}" var="category">
+											<li class="mb-1 active"><a
+												href="CategoryServlet?cid=${category.id}" class="dropdown-item"><span>${category.name}</span></a></li>
+											</c:forEach>
+										</ul>
 									</div>
 									<div class="btn-group">
 										<button type="button"
@@ -138,11 +139,14 @@
 							<ul class="list-unstyled mb-0">
 								<c:forEach items="${listCategory}" var="category">
 									<li class="mb-1 active"><a
-										href="CategoryServlet?cid=${category.id}" class="d-flex"><span>${category.name}</span></a></li>
+										href="CategoryServlet?cid=${category.id}" class="d-flex">
+										<span>${category.name}</span>
+										</a>
+										</li>
 								</c:forEach>
 							</ul>
 						</div>
-
+ 	
 						<div class="border p-4 rounded mb-4">
 							<div class="mb-4">
 								<h3 class="mb-3 h6 text-uppercase text-black d-block">Filter

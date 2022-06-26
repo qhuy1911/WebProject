@@ -2,6 +2,7 @@ package adminController;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +15,7 @@ import javax.servlet.http.Part;
 
 import dao.AdminDAO;
 import dao.DAO;
+import model.Category;
 import model.Product;
 
 /**
@@ -44,7 +46,10 @@ public class EditProductServlet extends HttpServlet {
 		String productId = request.getParameter("pid");
 		DAO dao = new DAO();
 		Product product = dao.getProductById(productId);
+		List<Category> listC = dao.getAllCategory();
+		
 		request.setAttribute("product", product);
+		request.setAttribute("listC", listC);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/admin/editProduct.jsp");
 		dispatcher.forward(request, response);
@@ -63,9 +68,10 @@ public class EditProductServlet extends HttpServlet {
 			double price = Double.parseDouble(request.getParameter("price"));
 			Part filePart = request.getPart("imageFile");
 			String fileName = getFileName(filePart);
+			int category = Integer.parseInt(request.getParameter("category"));
 			
 			// Upload file
-			String appPath = "E:\\HK1_2021-2022\\LapTrinhWeb\\Project\\ShopOnline\\WebContent\\views\\user";
+			String appPath = "E:\\Nam 4\\HK1\\LTW-PROJECT\\WebProject\\WebContent\\views\\user";
 			
 			String savePath = appPath + File.separator + SAVE_DIR;
 			
@@ -76,7 +82,7 @@ public class EditProductServlet extends HttpServlet {
 			
 			filePart.write(savePath + File.separator + fileName);
 			
-			Product product = new Product(id, name, fileName, price, title, description);
+			Product product = new Product(id, name, fileName, price, title, description, category);
 			AdminDAO dao = new AdminDAO();
 			boolean success = dao.editProduct(product);
 			if (success) {

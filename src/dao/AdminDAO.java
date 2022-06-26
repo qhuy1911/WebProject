@@ -9,6 +9,7 @@ import java.util.List;
 import context.DBContext;
 import model.Account;
 import model.Category;
+import model.Order;
 import model.Product;
 
 public class AdminDAO {
@@ -27,7 +28,7 @@ public class AdminDAO {
 			ps.setDouble(3, product.getPrice());
 			ps.setString(4, product.getTitle());
 			ps.setString(5, product.getDescription());
-			ps.setInt(6, 1);
+			ps.setInt(6, product.getCategory());
 			ps.executeUpdate();
 		} catch (Exception e) {
 			return false;
@@ -53,7 +54,7 @@ public class AdminDAO {
 			ps.setDouble(3, product.getPrice());
 			ps.setString(4, product.getTitle());
 			ps.setString(5, product.getDescription());
-			ps.setInt(6, 1);
+			ps.setInt(6, product.getCategory());
 			ps.setInt(7, product.getId());
 			ps.executeUpdate();
 		} catch (Exception e) {
@@ -140,6 +141,28 @@ public class AdminDAO {
 			}
 		}
 	}
+	public List<Order> getAllOrder() {
+		List<Order> list = new ArrayList<Order>();
+		String query = "select * from Orders";
+		try {
+			conn = new DBContext().connect();
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				list.add(new Order(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+						rs.getString(6), rs.getInt(7), rs.getDate(8)));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			try {
+				conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+		return list;
+	}
 	
 //	public List<Account> getAllAccount() {
 //		List<Account> list = new ArrayList<Account>();
@@ -170,10 +193,10 @@ public class AdminDAO {
 //		return list;
 //	}
 	
-//	public static void main(String[] args) {
+	public static void main(String[] args) {
 //		Product p = new Product(8, "Men shoes 4", "hero_1.png", 500, "Men shoes 4", "Men shoes 4");
 //		Category c = new Category(5, "Shoes 3");
 //		AdminDAO dao = new AdminDAO();
-//		System.out.println(dao.editCategory(c));
-//	}
+//		System.out.println(d);
+	}
 }
