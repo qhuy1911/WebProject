@@ -8,9 +8,11 @@ public class Product {
 	private String title;
 	private String description;
 	
+	private int category;
+	
 	public Product() {}
 
-	public Product(int id, String name, String image, double price, String title, String description) {
+	public Product(int id, String name, String image, double price, String title, String description, int category) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -18,6 +20,7 @@ public class Product {
 		this.price = price;
 		this.title = title;
 		this.description = description;
+		this.category = category;
 	}
 
 	public int getId() {
@@ -67,11 +70,19 @@ public class Product {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	public int getCategory() {
+		return category;
+	}
+
+	public void setCategory(int category) {
+		this.category = category;
+	}
 
 	@Override
 	public String toString() {
 		return "Product {id=" + id + ", name=" + name + ", image=" + image + ", price=" + price + ", title=" + title
-				+ ", description=" + description + "}";
+				+ ", description=" + description + ", category= "+category+  "}";
 	}
 	
 	

@@ -56,24 +56,24 @@
             <div class="p-3 p-lg-5 border">
               <div class="form-group row">
                 <div class="col-md-6">
-                  <label for="c_fname" class="text-black">First Name <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_fname" name="c_fname" placeholder="First name">
+                  <label for="c_fname" class="text-black" >First Name <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="c_fname" name="c_fname" placeholder="First name" required="required">
                 </div>
                 <div class="col-md-6">
                   <label for="c_lname" class="text-black">Last Name <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_lname" name="c_lname" placeholder="Last name">
+                  <input type="text" class="form-control" id="c_lname" name="c_lname" placeholder="Last name" required>
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-md-12">
                   <label for="c_address" class="text-black">Address <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_address" name="c_address" placeholder="Street address">
+                  <input type="text" class="form-control" id="c_address" name="c_address" placeholder="Street address" required>
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-md-12">
                   <label for="c_phone" class="text-black">Phone <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_phone" name="c_phone" placeholder="Phone Number">
+                  <input type="text" class="form-control" id="c_phone" name="c_phone" placeholder="Phone Number" pattern="[0-9]" required>
                 </div>
               </div>
               <div class="form-group ">
@@ -107,7 +107,7 @@
                     </tbody>
                   </table>
                   <div class="form-group">
-                    <button class="btn btn-primary btn-lg py-3 btn-block" onclick="window.location='thankyou.html'">Place Order</button>
+                    <button class="btn btn-primary btn-lg py-3 btn-block">Place Order</button>
                   </div>
 
                 </div>

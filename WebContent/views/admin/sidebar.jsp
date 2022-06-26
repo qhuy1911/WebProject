@@ -34,6 +34,12 @@
                 <i class="mdi mdi-apps menu-icon"></i>
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="HistoryOrderAdmin">
+                <span class="menu-title">History Order</span>
+                <i class="mdi mdi-clipboard-text menu-icon"></i>
+              </a>
+            </li>
             <!-- <li class="nav-item">
               <a class="nav-link" href="#">
                 <span class="menu-title">Account</span>

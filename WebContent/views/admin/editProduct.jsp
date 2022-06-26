@@ -1,3 +1,4 @@
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -44,7 +45,7 @@
               <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <form class="forms-sample" action="EditProduct" method="post" enctype="multipart/form-data">
+                    <form name="formEditProduct"  onsubmit="return validate()" class="forms-sample" action="EditProduct" method="post" enctype="multipart/form-data">
                     	<div class="form-group">
                         <input type="hidden" name="id" class="form-control" value="${product.id }">
                       </div>
@@ -65,8 +66,23 @@
                         <input type="text" name="price" class="form-control" value="${product.price }" placeholder="Price">
                       </div>
                       <div class="form-group">
-                        <label>Image upload</label>
-                        <input type="file" name="imageFile" class="file-upload-default">
+                        <label >Category</label>
+                        <select name="category" class="form-control" >
+                        	<option value="${product.category}">
+                        	<c:forEach var="item" items="${listC}">
+                        		<c:if test="${ item.id == product.category}">
+                        			${item.name}
+                        		</c:if>
+                        	</c:forEach>
+                        	</option>
+                        	<c:forEach var="item" items="${listC}">
+                        		<option value="${item.id}">${item.name}</option>
+                        	</c:forEach>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label>Image upload <span id="imageFileError"></span></label>
+                        <input type="file" name="imageFile" class="file-upload-default" >
                         <div class="input-group col-xs-12">
                           <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
                           <span class="input-group-append">
@@ -75,12 +91,30 @@
                         </div>
                       </div>  
                       <button type="submit" class="btn btn-gradient-primary mr-2" name="action" value="Submit">Submit</button>
-                      <button class="btn btn-light" name="action" value="Cancel">Cancel</button>
+                      <button class="btn btn-light" name="action" value="Cancel" onclick="location.href='ProductAdmin'">Cancel</button>
                     </form>
                   </div>
                 </div>
               </div>  
           </div>
+            <script type="text/javascript">
+          function validate() {
+              var name = document.formEditProduct.imageFile.value;
+              var status = false;
+       
+              if (name.length < 1) {
+                  document.getElementById("imageFileError").innerHTML = 
+       				"Please upload image";
+                  document.getElementById("imageFileError").style.color = "red";
+                  status = false;
+              } else {
+                  document.getElementById("imageFileError").innerHTML = 
+                      "Image Valid";
+                  status = true;
+              }
+              return status;
+          }
+          </script>
           <!-- content-wrapper ends -->
           <!-- partial:./partials/_footer.html -->
           <jsp:include page="footer.jsp"></jsp:include>
