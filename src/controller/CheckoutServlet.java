@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.DAO;
+import mail.SendMail;
 import model.Account;
 import model.Cart;
 import model.Item;
@@ -57,19 +58,21 @@ public class CheckoutServlet extends HttpServlet {
 		Cart cart = (Cart) session.getAttribute("cart");
 		String product = "";
 		for (Item i : cart.getItems()) {
-			product += i.getProduct().getName() +" x " +i.getQuantity()+ " ";
-		}	
+			product += i.getProduct().getName() + " x " + i.getQuantity() + "</br>";
+		}
 		int total = (int) cart.getSumPrice();
-		
+
 		DAO dao = new DAO();
-		Order order = new Order(account.getUsername(), fname+" "+ lname, phone, address, product, total);
+		Order order = new Order(account.getUsername(), fname + " " + lname, phone, address, product, total);
 		boolean success = dao.addOrder(order);
 		
-		if(success) {
+
+		if (success) {
+			SendMail.send(account.getEmail(), order, cart.getItems());
 			System.out.println("order success");
-		}else 
+		} else
 			System.out.println("faild");
-		
+
 		session.removeAttribute("cart");
 		response.sendRedirect("PlaceOrder");
 	}
