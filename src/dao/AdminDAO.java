@@ -150,7 +150,7 @@ public class AdminDAO {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				list.add(new Order(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-						rs.getString(6), rs.getInt(7), rs.getDate(8)));
+						rs.getString(6), rs.getInt(7), rs.getDate(8), rs.getBoolean(9)));
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -162,6 +162,29 @@ public class AdminDAO {
 			}
 		}
 		return list;
+	}
+	
+	public boolean updateStatudOrder(int id, boolean status) {
+		String query = "update Orders\r\n"
+				+ "set status = ?\r\n"
+				+ "where id = ?";
+		try {
+			conn = new DBContext().connect();
+			ps = conn.prepareStatement(query);
+			ps.setBoolean(1, !status);
+			ps.setInt(2, id);
+			ps.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			try {
+				conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+		return false;
 	}
 	
 //	public List<Account> getAllAccount() {

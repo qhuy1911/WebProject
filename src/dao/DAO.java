@@ -42,6 +42,55 @@ public class DAO {
 		}
 		return list;
 	}
+	
+	public int getCountProduct() {
+		String query = "select count(*) from Product";
+		
+		try {
+			conn = new DBContext().connect();
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			try {
+				conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+		
+		return 0;
+	}
+	
+	public List<Product> getProductPaging(int index) {
+		List<Product> list = new ArrayList<>();
+		String query = "select * from product order by id offset ? Rows fetch next 9 rows only";
+		try {
+			conn = new DBContext().connect();
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, (index-1)*9);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				list.add(new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
+						rs.getString(6), rs.getInt(7)));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		finally {
+			try {
+				conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+		
+		return list;
+	}
 
 	public List<Category> getAllCategory() {
 		List<Category> list = new ArrayList<Category>();
@@ -200,7 +249,7 @@ public class DAO {
 	}
 
 	public boolean addOrder(Order order) {
-		String query = "insert into Orders values (?, ?, ?, ?, ?, ?, ?)";
+		String query = "insert into Orders values (?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			conn = new DBContext().connect();
 			ps = conn.prepareStatement(query);
@@ -210,6 +259,7 @@ public class DAO {
 			ps.setString(4, order.getAddress());
 			ps.setString(5, order.getProduct());
 			ps.setInt(6, order.getTotal());
+			ps.setBoolean(7, order.isStatus());
 
 			Date d = new Date(order.getDate().getTime());
 			ps.setDate(7, (java.sql.Date) d);
@@ -236,7 +286,7 @@ public class DAO {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				list.add(new Order(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-						rs.getString(6), rs.getInt(7), rs.getDate(8)));
+						rs.getString(6), rs.getInt(7), rs.getDate(8), rs.getBoolean(9)));
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -298,7 +348,7 @@ public class DAO {
 
 
 	public static void main(String[] args) {
-//		DAO dao = new DAO();
-//		System.out.println(dao.getShortByPriceLow());
+		DAO dao = new DAO();
+		System.out.println(dao.getCountProduct());
 	}
 }

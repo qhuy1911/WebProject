@@ -35,13 +35,28 @@ public class HomeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		String indexPage = request.getParameter("index");
+		if (indexPage == null) {
+			indexPage = "1";
+		}
+		int index = Integer.parseInt(indexPage);
 		
 		// load data
 		DAO dao = new DAO();
-		List<Product> list = dao.getAllProduct();
+		
+		// pagination
+		int count = dao.getCountProduct();//13
+		int endPages = count/9;
+		if (count%9!= 0) {
+			endPages++;
+		}
+		
+		List<Product> list = dao.getProductPaging(index);
 		List<Category> listC = dao.getAllCategory();
 
 		// set data into jsp
+		request.setAttribute("index", index);
+		request.setAttribute("endPages", endPages);
 		request.setAttribute("listProduct", list);
 		request.setAttribute("listCategory", listC);
 		request.getRequestDispatcher("/views/user/product.jsp").forward(request, response);

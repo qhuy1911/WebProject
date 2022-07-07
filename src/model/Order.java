@@ -11,10 +11,11 @@ public class Order {
 	private String product;
 	private int total;
 	private Date date;
+	private boolean status;
 
 	public Order() {
 	}
-	public Order( String username, String name, String phone, String address, String product, int total) {
+	public Order( String username, String name, String phone, String address, String product, int total, boolean status) {
 		this.username = username;
 		this.name = name;
 		this.phone = phone;
@@ -22,9 +23,10 @@ public class Order {
 		this.product = product;
 		this.total = total;
 		this.date = new Date();
+		this.status = status;
 	}
 	public Order(int id, String username, String name, String phone, String address, String product, int total,
-			Date date) {
+			Date date, boolean status) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -34,6 +36,7 @@ public class Order {
 		this.product = product;
 		this.total = total;
 		this.date = date;
+		this.status = status;
 	}
 
 	public int getId() {
@@ -100,6 +103,12 @@ public class Order {
 		this.date = date;
 	}
 
+	public boolean isStatus() {
+		return status;
+	}
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 	@Override
 	public String toString() {
 		return "Order {id= " + id + ", username= " + username + ", name=" + name + ", phone= " + phone + ", address= "

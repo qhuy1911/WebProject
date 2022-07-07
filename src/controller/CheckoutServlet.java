@@ -63,7 +63,7 @@ public class CheckoutServlet extends HttpServlet {
 		int total = (int) cart.getSumPrice();
 
 		DAO dao = new DAO();
-		Order order = new Order(account.getUsername(), fname + " " + lname, phone, address, product, total);
+		Order order = new Order(account.getUsername(), fname + " " + lname, phone, address, product, total, false);
 		boolean success = dao.addOrder(order);
 		
 

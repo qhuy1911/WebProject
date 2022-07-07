@@ -66,11 +66,11 @@
 											class="btn btn-secondary btn-sm dropdown-toggle"
 											id="dropdownMenuOffset" data-toggle="dropdown"
 											aria-haspopup="true" aria-expanded="false">Latest</button>
-										<ul class="dropdown-menu"
-											aria-labelledby="dropdownMenuOffset">
+										<ul class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
 											<c:forEach items="${listCategory}" var="category">
-											<li class="mb-1 active"><a
-												href="CategoryServlet?cid=${category.id}" class="dropdown-item"><span>${category.name}</span></a></li>
+												<li class="mb-1 active"><a
+													href="CategoryServlet?cid=${category.id}"
+													class="dropdown-item"><span>${category.name}</span></a></li>
 											</c:forEach>
 										</ul>
 									</div>
@@ -84,8 +84,9 @@
 												class="dropdown-item" href="#">Name, A to Z</a> <a
 												class="dropdown-item" href="#">Name, Z to A</a>
 											<div class="dropdown-divider"></div>
-											<a class="dropdown-item" href="ListProductPriceLowServlet">Price, low to high</a> <a
-												class="dropdown-item" href="ListProductPriceHightServlet">Price, high to low</a>
+											<a class="dropdown-item" href="ListProductPriceLowServlet">Price,
+												low to high</a> <a class="dropdown-item"
+												href="ListProductPriceHightServlet">Price, high to low</a>
 										</div>
 									</div>
 								</div>
@@ -120,13 +121,15 @@
 							<div class="col-md-12 text-center">
 								<div class="site-block-27">
 									<ul>
-										<li><a href="#">&lt;</a></li>
-										<li class="active"><span>1</span></li>
-										<li><a href="#">2</a></li>
-										<li><a href="#">3</a></li>
-										<li><a href="#">4</a></li>
-										<li><a href="#">5</a></li>
-										<li><a href="#">&gt;</a></li>
+										<c:forEach begin="1" end="${endPages}" var="i">
+											<c:if test="${i == index }">
+												<li class="active"><span>${i}</span></li>
+											</c:if>
+											<c:if test="${i != index }">
+												<li><a href="HomeServlet?index=${i}">${i}</a></li>
+											</c:if>
+										</c:forEach>
+
 									</ul>
 								</div>
 							</div>
@@ -140,13 +143,12 @@
 								<c:forEach items="${listCategory}" var="category">
 									<li class="mb-1 active"><a
 										href="CategoryServlet?cid=${category.id}" class="d-flex">
-										<span>${category.name}</span>
-										</a>
-										</li>
+											<span>${category.name}</span>
+									</a></li>
 								</c:forEach>
 							</ul>
 						</div>
- 	
+
 						<div class="border p-4 rounded mb-4">
 							<div class="mb-4">
 								<h3 class="mb-3 h6 text-uppercase text-black d-block">Filter

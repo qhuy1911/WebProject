@@ -25,6 +25,37 @@
 <!-- End layout styles -->
 <link rel="shortcut icon"
 	href="${pageContext.request.contextPath}/views/admin/assets/images/favicon.ico" />
+<style type="text/css">
+.status-btn {
+	text-decoration: none;
+	background-color: #dc3545;
+	color: #fff;
+	padding: 2px 6px 2px 6px;
+	border-top: 1px solid #dc3545;
+	border-right: 1px solid #dc3545;
+	border-bottom: 1px solid #dc3545;
+	border-left: 1px solid #dc3545;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+.status-btn-active {
+	text-decoration: none;
+	background-color: #198754;
+	color: #fff;
+	padding: 2px 6px 2px 6px;
+	border-top: 1px solid #198754;
+	border-right: 1px solid #198754;
+	border-bottom: 1px solid #198754;
+	border-left: 1px solid #198754;
+	border-radius: 8px;
+}
+
+.status-btn:hover {
+	color: #fff;
+	text-decoration: none;
+}
+</style>
 </head>
 <body>
 	<div class="container-scroller">
@@ -61,6 +92,7 @@
 												<th class="history-product">Product</th>
 												<th class="history-total">Total</th>
 												<th class="history-date">Date order</th>
+												<th class="history-status">Status</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -72,6 +104,13 @@
 													<td>${orderItem.product}</td>
 													<td>${orderItem.total }$</td>
 													<td>${orderItem.date }</td>
+													<td><c:if test="${orderItem.status == true}">
+															<a class='status-btn status-btn-active' href="UpdateOrderServlet?id=${orderItem.id}&status=${orderItem.status} ">
+																${orderItem.status } </a>
+														</c:if> <c:if test="${orderItem.status == false}">
+															<a class='status-btn' href="UpdateOrderServlet?id=${orderItem.id}&status=${orderItem.status}">
+																${orderItem.status } </a>
+														</c:if></td>
 												</tr>
 
 											</c:forEach>
