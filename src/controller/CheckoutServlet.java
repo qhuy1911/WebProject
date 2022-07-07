@@ -58,7 +58,7 @@ public class CheckoutServlet extends HttpServlet {
 		Cart cart = (Cart) session.getAttribute("cart");
 		String product = "";
 		for (Item i : cart.getItems()) {
-			product += i.getProduct().getName() + " x " + i.getQuantity() + "\n";
+			product += i.getProduct().getName() + " x " + i.getQuantity() + "</br>";
 		}
 		int total = (int) cart.getSumPrice();
 

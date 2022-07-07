@@ -74,6 +74,7 @@
                 <div class="col-md-12">
                   <label for="c_phone" class="text-black">Phone <span class="text-danger">*</span></label>
                   <input type="text" class="form-control" id="c_phone" name="c_phone" placeholder="Phone Number" required>
+
                 </div>
               </div>
               <div class="form-group ">

@@ -38,6 +38,7 @@ public class SendMail {
             MimeMessage message = new MimeMessage(session);
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
             message.setSubject("Shop Online Order");
+            message.setHeader("Content-Type", "text/plain;charset=UTF-8");
             String content = "Dear " + order.getName() + "\n";
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm dd/MM/yyyy");
             content += "You placed an order on Shop Online website at " + simpleDateFormat.format(order.getDate()) + ". Please check your order infomation: \n";
