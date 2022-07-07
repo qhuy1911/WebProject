@@ -249,9 +249,56 @@ public class DAO {
 		}
 		return list;
 	}
+	public List<Product> getShortByPriceLow() {
+		List<Product> list = new ArrayList<Product>();
+		// query
+		String query = "Select * from Product order by price";
+		try {
+			conn = new DBContext().connect();
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				list.add(new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
+						rs.getString(6), rs.getInt(7)));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			try {
+				conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+		return list;
+	}
+	public List<Product> getShortByPriceHight() {
+		List<Product> list = new ArrayList<Product>();
+		// query
+		String query = "Select * from Product order by price desc";
+		try {
+			conn = new DBContext().connect();
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				list.add(new Product(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
+						rs.getString(6), rs.getInt(7)));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			try {
+				conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+		return list;
+	}
+
 
 	public static void main(String[] args) {
 //		DAO dao = new DAO();
-//		System.out.println(dao.getOrderByUsername("nhu"));
+//		System.out.println(dao.getShortByPriceLow());
 	}
 }
