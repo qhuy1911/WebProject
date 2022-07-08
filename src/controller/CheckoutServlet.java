@@ -71,7 +71,7 @@ public class CheckoutServlet extends HttpServlet {
 			SendMail.send(account.getEmail(), order, cart.getItems());
 			System.out.println("order success");
 		} else
-			System.out.println("faild");
+			System.out.println("fail");
 
 		session.removeAttribute("cart");
 		response.sendRedirect("PlaceOrder");

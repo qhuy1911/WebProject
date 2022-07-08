@@ -259,7 +259,7 @@ public class DAO {
 			ps.setString(4, order.getAddress());
 			ps.setString(5, order.getProduct());
 			ps.setInt(6, order.getTotal());
-			ps.setBoolean(7, order.isStatus());
+			ps.setBoolean(8, order.isStatus());
 
 			Date d = new Date(order.getDate().getTime());
 			ps.setDate(7, (java.sql.Date) d);
