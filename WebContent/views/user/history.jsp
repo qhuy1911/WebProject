@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Shoppers &mdash; Colorlib e-Commerce Template</title>
+<title>Shoppers</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -70,6 +70,7 @@
 												<th class="history-product">Product</th>
 												<th class="history-total">Total</th>
 												<th class="history-date">Date order</th>
+												<th class="history-date">Status</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -81,6 +82,9 @@
 													<td>${orderItem.product}</td>
 													<td>${orderItem.total }</td>
 													<td>${orderItem.date }</td>
+													<td>
+														<p style='color: ${orderItem.status ? "green" : "red"}; font-weight: 600;'>${orderItem.status ? "paid" : "unpaid" }</p>
+													</td>
 												</tr>
 											</c:forEach>
 										</tbody>

@@ -23,15 +23,15 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="ProductAdmin">
-                <span class="menu-title">Product</span>
-                <i class="mdi mdi-tshirt-v menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="CategoryAdmin">
                 <span class="menu-title">Category</span>
                 <i class="mdi mdi-apps menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="ProductAdmin">
+                <span class="menu-title">Product</span>
+                <i class="mdi mdi-tshirt-v menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">

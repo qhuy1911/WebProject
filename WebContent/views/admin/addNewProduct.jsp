@@ -7,7 +7,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Purple Admin</title>
+    <title>Shop Admin</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/views/admin/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/views/admin/assets/vendors/css/vendor.bundle.base.css">
@@ -45,7 +45,7 @@
               <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <form  name="formAddProduct" class="forms-sample" action="AddProduct" method="post" enctype="multipart/form-data">
+                    <form  name="formAddProduct" onsubmit="return validate()"  class="forms-sample" action="AddProduct" method="post" enctype="multipart/form-data">
                       <div class="form-group">
                         <label>Name</label>
                         <input type="text" name="name" class="form-control"  placeholder="Name" required="required">
